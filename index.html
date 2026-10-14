@@ -1,0 +1,670 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StyleUp | Fashion for Every You</title>
+    <meta name="description" content="Discover fashion, footwear and lifestyle essentials at StyleUp.">
+
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        :root {
+            --wine: #a9572b;
+            --cream: #faf8f4;
+            --ink: #28211d;
+            --border: #e8dfd4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--cream);
+            color: var(--ink);
+            font-family: "Trebuchet MS", Arial, sans-serif;
+        }
+
+        #navbar {
+            background: #fffdf9;
+            border-bottom: 1px solid var(--border);
+        }
+
+        #products_page > div {
+            cursor: pointer;
+            transition: color .2s ease;
+        }
+
+        #products_page > div:hover {
+            color: var(--wine);
+        }
+
+        /* Invite strip */
+        #invite {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 11px 15px;
+            background: #47352b;
+            color: #fffaf5;
+            text-align: center;
+        }
+
+        #invite img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        #invite p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        #invite button {
+            padding: 10px 16px;
+            border: 1px solid #e9c8ae;
+            border-radius: 3px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        #invite button:hover {
+            background: #fffaf5;
+            color: #47352b;
+        }
+
+        #main-container {
+            width: 100%;
+            max-width: 1700px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Premium fashion hero */
+        .styleup-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 94%;
+            height: 410px;
+            margin: 25px auto 36px;
+            overflow: hidden;
+            border-radius: 3px;
+            background: #eee1d2;
+        }
+
+        .styleup-hero-image {
+            min-width: 0;
+            overflow: hidden;
+            background: #e9ddcf;
+        }
+
+        .styleup-hero-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+            transition: transform .7s ease;
+        }
+
+        .styleup-hero-image:hover img {
+            transform: scale(1.025);
+        }
+
+        .styleup-hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 35px clamp(24px, 5vw, 75px);
+            background: linear-gradient(135deg, #f4e9dc, #e8d6c3);
+        }
+
+        .styleup-eyebrow {
+            margin: 0 0 17px;
+            color: var(--wine);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .styleup-hero-content h1 {
+            margin: 0;
+            color: #30241e;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(35px, 4vw, 60px);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+        }
+
+        .styleup-hero-description {
+            margin: 20px 0 25px;
+            color: #6b594d;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .styleup-shop-button {
+            padding: 14px 27px;
+            border: 1px solid var(--wine);
+            border-radius: 2px;
+            background: var(--wine);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .styleup-shop-button span {
+            padding-left: 12px;
+        }
+
+        .styleup-shop-button:hover {
+            transform: translateY(-2px);
+            background: #74391f;
+        }
+
+        .styleup-hero-note {
+            margin: 27px 0 0;
+            color: #896650;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* Fashion carousels */
+        #crauser_1,
+        #crauser_2 {
+            position: relative;
+            width: 94%;
+            height: clamp(190px, 24vw, 310px);
+            margin: 32px auto 40px;
+            overflow: hidden;
+            border-radius: 3px;
+            background: #e9dfd4;
+        }
+
+        #image_url,
+        #image2_url {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 35%;
+        }
+
+        #crauser_1 .prev,
+        #crauser_1 .next,
+        #crauser_2 .prev1,
+        #crauser_2 .next1 {
+            position: absolute;
+            top: 50%;
+            z-index: 2;
+            width: 42px;
+            height: 42px;
+            transform: translateY(-50%);
+            border: 1px solid #ffffffb3;
+            border-radius: 50%;
+            background: #fffaf2ed;
+            color: var(--wine);
+            font-size: 22px;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        #crauser_1 .prev,
+        #crauser_2 .prev1 {
+            left: 14px;
+        }
+
+        #crauser_1 .next,
+        #crauser_2 .next1 {
+            right: 14px;
+        }
+
+        #crauser_1 button:hover,
+        #crauser_2 button:hover {
+            background: var(--wine);
+            color: white;
+        }
+
+        /* Product collections */
+        #products_grid1,
+        #products_grid2 {
+            width: 94%;
+            margin: 24px auto 42px;
+        }
+
+        .styleup-category-card {
+            overflow: hidden;
+            border-radius: 3px;
+            background: #fffdf9;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .styleup-category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px #47352b17;
+        }
+
+        .styleup-category-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Promotional banners */
+        #main-container > img.image {
+            display: block;
+            width: 94%;
+            max-height: 250px;
+            margin: 30px auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        /* Footer */
+        #end-container {
+            padding: 42px 5% 28px;
+            background: #eee5db;
+            border-top: 1px solid var(--border);
+            color: #493b32;
+        }
+
+        #table {
+            width: 100%;
+            max-width: 650px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        #table th {
+            padding: 12px 18px 16px 0;
+            color: #38291f;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        #table td {
+            padding: 7px 18px 7px 0;
+            color: #75665c;
+            font-size: 13px;
+        }
+
+        #table td[onclick],
+        #table td a {
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #table td:hover,
+        #table td a:hover {
+            color: var(--wine);
+        }
+
+        #end-container h4 {
+            margin: 26px 0 10px;
+            color: #49352a;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        #end-container p,
+        #end-container li {
+            color: #75665c;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        #end-container ol {
+            padding-left: 22px;
+        }
+
+        .footer-credit {
+            padding-top: 18px;
+            border-top: 1px solid #d9cabe;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 700px) {
+            #invite {
+                gap: 8px;
+                padding: 10px;
+            }
+
+            #invite p {
+                font-size: 10px;
+            }
+
+            #invite button {
+                padding: 7px 9px;
+                font-size: 10px;
+            }
+
+            .styleup-hero {
+                grid-template-columns: 1fr;
+                grid-template-rows: 250px auto;
+                width: 94%;
+                height: auto;
+                margin: 14px auto 22px;
+            }
+
+            .styleup-hero-image img {
+                object-position: center 35%;
+            }
+
+            .styleup-hero-content {
+                padding: 29px 24px;
+            }
+
+            .styleup-hero-content h1 {
+                font-size: 38px;
+            }
+
+            .styleup-eyebrow {
+                margin-bottom: 10px;
+                letter-spacing: 3px;
+            }
+
+            .styleup-hero-description {
+                margin: 13px 0 18px;
+            }
+
+            .styleup-hero-note {
+                margin-top: 18px;
+            }
+
+            #crauser_1,
+            #crauser_2 {
+                width: 94%;
+                height: 175px;
+                margin: 20px auto;
+            }
+
+            #crauser_1 .prev,
+            #crauser_1 .next,
+            #crauser_2 .prev1,
+            #crauser_2 .next1 {
+                width: 32px;
+                height: 32px;
+                font-size: 17px;
+            }
+
+            #crauser_1 .prev,
+            #crauser_2 .prev1 {
+                left: 8px;
+            }
+
+            #crauser_1 .next,
+            #crauser_2 .next1 {
+                right: 8px;
+            }
+
+            #products_grid1,
+            #products_grid2 {
+                width: 94%;
+            }
+
+            #end-container {
+                padding: 30px 5% 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <div id="navbar">
+        <div>
+            <img
+                onclick="homePage()"
+                class="wth"
+                src="https://i.postimg.cc/T2Lx6cQG/STYLE-UP-Photo-Room.png"
+                alt="StyleUp logo"
+                width="500"
+                height="500"
+            >
+        </div>
+
+        <div id="products_page">
+            <div>MEN</div>
+            <div>WOMEN</div>
+            <div>KIDS</div>
+            <div>HOME &amp; LIVING</div>
+        </div>
+
+        <div>
+            <input
+                type="text"
+                name="search"
+                id="search-bar"
+                placeholder="Search for products, brands & more"
+                aria-label="Search products"
+            >
+        </div>
+
+        <div id="login_Status"></div>
+    </div>
+
+    <!-- INVITE FRIENDS STRIP -->
+    <section id="invite">
+        <div>
+            <img
+                src="https://w1.pngwing.com/pngs/226/799/png-transparent-rupee-symbol-indian-rupee-sign-currency-symbol-money-orange-area-logo-thumbnail.png"
+                alt="StyleUp rewards"
+            >
+        </div>
+
+        <div>
+            <p>Good style is better shared — invite friends and earn up to ₹150 StyleUp Cash.</p>
+        </div>
+
+        <button type="button">Invite Now &rarr;</button>
+    </section>
+
+    <main id="main-container">
+
+        <!-- HERO BANNER -->
+        <section id="home-pic" class="styleup-hero">
+
+            <div class="styleup-hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
+                    alt="Model showcasing a contemporary fashion look"
+                    fetchpriority="high"
+                >
+            </div>
+
+            <div class="styleup-hero-content">
+                <p class="styleup-eyebrow">NEW SEASON · 2026</p>
+
+                <h1>Style That<br>Moves With You</h1>
+
+                <p class="styleup-hero-description">
+                    Fresh looks. Everyday comfort. Timeless style.
+                </p>
+
+                <button
+                    class="styleup-shop-button"
+                    type="button"
+                    onclick="document.getElementById('products_grid2').scrollIntoView({behavior:'smooth'})"
+                >
+                    Shop Now <span aria-hidden="true">→</span>
+                </button>
+
+                <p class="styleup-hero-note">
+                    BETTER STYLE. BRIGHTER DAYS.
+                </p>
+            </div>
+        </section>
+
+        <!-- FIRST FASHION CAROUSEL -->
+        <div id="crauser_1">
+            <img
+                id="image_url"
+                src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85"
+                alt="Discover stylish fashion"
+            >
+
+            <button class="prev" type="button" aria-label="Previous collection">&lt;</button>
+            <button class="next" type="button" aria-label="Next collection">&gt;</button>
+        </div>
+
+        <!-- WARDROBE ESSENTIALS -->
+        <img
+            class="image"
+            src="https://i.postimg.cc/VND9ckCh/wadrope.webp"
+            alt="Wardrobe essentials"
+            loading="lazy"
+        >
+
+        <!-- COLLECTION GRID -->
+        <div id="products_grid2"></div>
+
+        <!-- FASHION DEALS -->
+        <img
+            class="image"
+            src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2022/6/10/8fd79f84-0aa6-4c11-850a-626bdc098f631654801550323-Unbelievable-Deals.jpg"
+            alt="Fashion deals"
+            loading="lazy"
+        >
+
+        <div id="products_grid1"></div>
+
+        <!-- SECOND FASHION CAROUSEL -->
+        <div id="crauser_2">
+            <img
+                id="image2_url"
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1800&q=85"
+                alt="Explore more fashion collections"
+                loading="lazy"
+            >
+
+            <button class="prev1" type="button" aria-label="Previous collection">&lt;</button>
+            <button class="next1" type="button" aria-label="Next collection">&gt;</button>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="end-container">
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Online Shopping</th>
+                    <th>Useful Links</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td onclick="window.location.href='mens.html'">Men</td>
+                    <td><a href="contact-us.html">Contact Us</a></td>
+                </tr>
+                <tr>
+                    <td>Women</td>
+                    <td><a href="blog.html">Blog</a></td>
+                </tr>
+                <tr>
+                    <td>Kids</td>
+                    <td><a href="about-us.html">About Us</a></td>
+                </tr>
+                <tr>
+                    <td>Home &amp; Living</td>
+                    <td><a href="terms-of-use.html">Terms of Use</a></td>
+                </tr>
+                <tr>
+                    <td>Beauty</td>
+                    <td>Tracking Order</td>
+                </tr>
+                <tr>
+                    <td>Accessories</td>
+                    <td>Shipping</td>
+                </tr>
+                <tr>
+                    <td>Gift Cards</td>
+                    <td>Returns</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Cancellation</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Site Map</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Privacy Policy</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ONLINE SHOPPING, REIMAGINED</h4>
+        <p>
+            Welcome to StyleUp, your destination for fashion and lifestyle essentials.
+            Explore clothing, footwear and accessories for different moods, occasions
+            and personal styles.
+        </p>
+
+        <h4>FASHION FOR EVERY MOMENT</h4>
+        <p>
+            From everyday basics to occasion-ready outfits, discover collections for
+            men, women and kids. Find pieces that suit your preferences and express
+            your personality.
+        </p>
+
+        <ol>
+            <li><strong>Men's fashion:</strong> Casual T-shirts, shirts, denim, trousers, footwear and accessories.</li>
+            <li><strong>Women's fashion:</strong> Tops, dresses, jeans, ethnic wear, footwear and accessories.</li>
+            <li><strong>Footwear:</strong> Sneakers, casual shoes, formal footwear and sandals.</li>
+            <li><strong>Accessories:</strong> Bags, watches, jewellery and everyday essentials.</li>
+            <li><strong>Kids' collection:</strong> Comfortable clothing and footwear for everyday activities.</li>
+        </ol>
+
+        <h4>BRING STYLE INTO YOUR SPACE</h4>
+        <p>
+            Explore home and living inspiration, from decorative accents to everyday essentials.
+        </p>
+
+        <h4>A SIMPLE SHOPPING EXPERIENCE</h4>
+        <p>
+            StyleUp brings fashion categories together in one place. Browse collections,
+            discover products and explore the options available across the store.
+        </p>
+
+        <p class="footer-credit">
+            &copy; <span id="current-year">2026</span> StyleUp. Fashion for your everyday. Designed & Developed by Monika N.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+    </script>
+
+    <script src="index.js"></script>
+    <script src="navbar.js"></script>
+    <script src="search-algo.js"></script>
+</body>
+</html>

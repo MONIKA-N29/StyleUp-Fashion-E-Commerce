@@ -1,0 +1,226 @@
+
+/* STYLEUP — WOMEN'S COLLECTION */
+
+:root {
+  --wine: #742c40;
+  --wine-dark: #51202d;
+  --cream: #faf7f3;
+  --ink: #282020;
+  --muted: #756969;
+  --border: #e9dfd8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* FILTER AND SORTING */
+#filter-container {
+  width: 96%;
+  min-height: 65px;
+  margin: 10px auto 0;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#filter-container > div:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#filter-container select {
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: #fffdfb;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* MAIN LAYOUT */
+#main-container {
+  width: 96%;
+  margin: 18px auto 45px;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* FILTER SIDEBAR */
+#checkbox-filters {
+  background: #fffdfb;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#checkbox-filters > div {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+#checkbox-filters > div:last-child {
+  border-bottom: none;
+}
+
+#checkbox-filters input[type="checkbox"] {
+  margin-right: 7px;
+  accent-color: var(--wine);
+}
+
+/* PRODUCT GRID — SAME STYLE AS MEN'S */
+#products {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0;
+  border: none;
+}
+
+/* PRODUCT CARD */
+#products > div {
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-bottom: 12px;
+  background: #fffdfb;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 3px 12px rgba(55, 30, 30, 0.04);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+#products > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 22px rgba(55, 30, 30, 0.11);
+}
+
+/* SAME IMAGE PROPORTIONS AS MEN'S */
+#products > div > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #f0e8e2;
+}
+
+/* PRODUCT NAME */
+#products > div > h3,
+#products > div > h4 {
+  margin: 12px 10px 5px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* PRICE */
+#products > div > p {
+  margin: 5px 10px;
+  color: var(--wine);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ORIGINAL PRICE, IF PRESENT */
+#products .striked {
+  margin: 2px 10px;
+  color: #958887;
+  font-size: 12px;
+  text-decoration: line-through;
+}
+
+/* DISCOUNT, IF PRESENT */
+#products .discount_label {
+  margin: 4px 10px;
+  color: var(--wine);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ADD TO CART */
+#products > div > button {
+  margin: auto 10px 0;
+  margin-top: 10px;
+  padding: 9px 8px;
+  border: 1px solid var(--wine);
+  border-radius: 4px;
+  background: var(--wine);
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#products > div > button:hover {
+  background: var(--wine-dark);
+}
+
+/* FOOTER */
+#end-container {
+  margin: 30px auto 0;
+  padding: 40px 5%;
+  background: #f0e8e2;
+  border-top: 1px solid var(--border);
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+  #main-container {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  #products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+  #filter-container > div:nth-child(2) {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  #main-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  #checkbox-filters {
+    width: 100%;
+  }
+
+  #products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #products > div > button {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,206 @@
+
+:root {
+    --wine: #742c40;
+    --wine-dark: #51202d;
+    --cream: #faf7f3;
+    --ink: #282020;
+    --muted: #756969;
+    --border: #e9dfd8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    background: var(--cream);
+    color: var(--ink);
+}
+
+/* Product grid */
+#container {
+    width: 95%;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+    padding: 10px 0;
+    border: none;
+}
+
+#container > div {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+    background: #fffdfb;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(55, 30, 30, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#container > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 22px rgba(55, 30, 30, 0.12);
+}
+
+#container > div > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: #f0e8e2;
+}
+
+/* Product name and price */
+#container > div > div,
+#container > div > h4 {
+    margin: 10px 10px 5px;
+}
+
+#container > div > h4 {
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#container > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+#container > div > div > p {
+    color: var(--wine);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#container > div > div > p:nth-child(2) {
+    color: #958887;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+
+#container > div > div > p + p + p {
+    color: var(--wine);
+    font-size: 13px;
+}
+
+/* Add to cart */
+#container > div > button {
+    margin: auto 10px 0;
+    padding: 9px 8px;
+    border: 1px solid var(--wine);
+    border-radius: 4px;
+    background: var(--wine);
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#container > div > button:hover {
+    background: var(--wine-dark);
+}
+
+/* Sorting controls */
+#sortbypriceAndName {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 22px 3% 0;
+}
+
+#sortNames {
+    height: 35px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: #fffdfb;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+/* Information section */
+#end-container {
+    margin: 25px auto 0;
+    padding: 30px 5%;
+    background: #f1e8e3;
+    border-top: 1px solid var(--border);
+}
+
+#table {
+    width: 50%;
+    text-align: left;
+    font-size: 15px;
+}
+
+#end-container > div:nth-child(2) {
+    width: 100%;
+    margin: 20px auto 0;
+    line-height: 1.8;
+}
+
+#end-container > div:nth-child(2) > h4 {
+    margin: 10px 0;
+    color: var(--wine);
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+    #container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    #table {
+        width: 75%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+    #container {
+        width: 94%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #container > div > h4 {
+        font-size: 12px;
+    }
+
+    #container > div > div > p {
+        font-size: 12px;
+    }
+
+    #container > div > button {
+        font-size: 12px;
+    }
+
+    #sortbypriceAndName {
+        justify-content: flex-start;
+        margin: 16px 3% 0;
+    }
+
+    #table {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    #end-container {
+        padding: 22px 4%;
+    }
+}
